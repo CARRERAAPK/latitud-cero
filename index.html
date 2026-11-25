@@ -3,100 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Latitud Cero</title>
+    <title>LATITUD CERO - App Oficial Ecuador</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 850px; margin: 0 auto; padding: 30px; background-color: #f9f5f5; }
-        .container { background-color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        :root {
+            --rojo-latitud: #B71C1C;
+            --rojo-oscuro: #7F0000;
+            --amarillo-taxi: #FBC02D;
+            --amarillo-hover: #F9A825;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
-        /* Contenedor para el título y el icono alineados */
-        .header-title { display: flex; align-items: center; gap: 20px; border-bottom: 3px solid #B71C1C; padding-bottom: 15px; margin-top: 0; }
-        .header-title h1 { color: #B71C1C; margin: 0; border: none; padding: 0; flex: 1; }
-        .app-icon { width: 70px; height: 70px; object-fit: contain; border-radius: 14px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-
-        h2 { color: #B71C1C; margin-top: 35px; border-left: 5px solid #FBC02D; padding-left: 15px; }
-        p, li { font-size: 1.1em; }
-        .highlight-box { background-color: #fff8f8; padding: 30px; border: 1px solid #B71C1C; border-radius: 6px; margin: 25px 0; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #777; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
-        strong { color: #000; }
-
-        /* Estilos de la sección del botón directo de correo */
-        .delete-action-box { background: #fff; border: 1px solid #f5c6cb; padding: 25px; border-radius: 6px; margin-top: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
-        .delete-action-box h3 { margin-top: 0; color: #B71C1C; border-bottom: 2px solid #FBC02D; padding-bottom: 8px; font-size: 1.3em; text-align: left; }
+        body { 
+            font-family: 'Titillium Web', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center; 
+            color: #333; 
+            background-color: #fff; 
+            line-height: 1.6;
+        }
         
-        .btn-direct-mail { display: inline-block; background-color: #B71C1C; color: white; border: none; padding: 14px 28px; border-radius: 4px; font-size: 1.1em; font-weight: bold; text-decoration: none; cursor: pointer; transition: background 0.2s, transform 0.1s; text-transform: uppercase; margin-top: 10px; box-shadow: 0 2px 5px rgba(183,28,28,0.3); }
-        .btn-direct-mail:hover { background-color: #8E0000; transform: translateY(-1px); }
-        .btn-direct-mail:active { transform: translateY(1px); }
+        .top-info { background: var(--rojo-oscuro); color: white; padding: 8px; font-size: 13px; position: relative; z-index: 10; font-weight: bold; }
 
-        @media (max-width: 600px) {
-            .header-title { flex-direction: column-reverse; align-items: flex-start; gap: 15px; }
-            .app-icon { width: 60px; height: 60px; }
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            .btn-direct-mail { width: 100%; box-sizing: border-box; }
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 8%; 
+            background: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        
+        .logo-container { display: flex; align-items: center; }
+        
+        .logo-nav { 
+            height: 65px; 
+            width: auto;
+            border-radius: 10px;
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .logo-nav:hover { opacity: 0.85; transform: scale(1.02); }
+
+        .menu { display: flex; align-items: center; }
+        .menu a { text-decoration: none; color: #333; margin: 0 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .menu a:hover { color: var(--rojo-latitud); }
+
+        .app-section { background: var(--rojo-latitud); color: white; padding: 60px 20px; position: relative; z-index: 5; }
+        .app-section h1 { font-size: 38px; margin: 0 0 10px; }
+        .playstore-btn { display: inline-block; margin: 20px 0 10px; transition: transform 0.2s; }
+        .playstore-btn:hover { transform: scale(1.05); }
+
+        .qr-container { margin: 20px 0 40px; }
+        .qr-code { 
+            border: 5px solid white; 
+            border-radius: 12px; 
+            background: white; 
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .qr-text { font-size: 14px; margin-top: 10px; font-weight: bold; color: white; letter-spacing: 1px; }
+
+        .features { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 40px auto 0; }
+        .card { background: rgba(255, 255, 255, 0.95); color: #333; flex: 1; min-width: 280px; max-width: 340px; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 40px; color: var(--amarillo-taxi); margin-bottom: 15px; display: block; text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+        .card h3 { color: var(--rojo-latitud); margin: 0 0 10px 0; font-size: 22px; }
+        
+        /* Estilos para las imágenes agregadas a las tarjetas */
+        .card-img { width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+        .bottom-wrapper {
+            background-image: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)), url('escritorio.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-top: 4px solid var(--amarillo-taxi);
+        }
+
+        .contact-container { display: flex; justify-content: center; padding: 80px 8%; gap: 5%; flex-wrap: wrap; max-width: 1300px; margin: 0 auto; }
+        
+        .info-box { 
+            flex: 1; 
+            min-width: 300px; 
+            text-align: left; 
+            padding: 30px; 
+            background: rgba(255, 255, 255, 0.92); 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+        }
+        .info-box h3 { font-size: 26px; border-bottom: 3px solid var(--rojo-latitud); padding-bottom: 10px; margin-bottom: 30px; color: #000; }
+        .info-box p { margin: 15px 0; font-size: 17px; font-weight: bold; color: #000; }
+        .policy-link { color: var(--rojo-latitud); font-weight: 800; text-decoration: none; }
+        .policy-link:hover { text-decoration: underline; }
+        
+        .form-box { 
+            flex: 1; 
+            min-width: 300px; 
+            max-width: 500px; 
+            border: 1px solid #ddd; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+            background: rgba(255, 255, 255, 0.98); 
+            text-align: left; 
+        }
+        .form-box h2 { font-size: 28px; margin: 0 0 5px 0; color: var(--rojo-oscuro); font-weight: bold; text-align: center; }
+        .form-box p { text-align: center; margin-bottom: 25px; color: #000; font-size: 15px; font-weight: 600; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: #000; font-size: 14px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #999; border-radius: 6px; font-family: inherit; font-size: 15px; background: #fff; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--rojo-latitud); outline: none; box-shadow: 0 0 8px rgba(183,28,28,0.35); }
+        
+        .btn-enviar { background: var(--rojo-latitud); color: white; border: none; padding: 16px 0; border-radius: 35px; font-weight: bold; font-size: 16px; width: 100%; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-enviar:hover { background: var(--rojo-oscuro); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(183,28,28,0.5); }
+
+        .floating { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 1000; }
+        .chat-tag { background: white; padding: 6px 15px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); font-weight: bold; font-size: 13px; color: #333; }
+        
+        .play-float-btn { 
+            background: white; 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+            transition: 0.3s; 
+            overflow: hidden; 
+        }
+        .play-float-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-float-btn:hover { transform: scale(1.15); box-shadow: 0 6px 25px rgba(183,28,28,0.5); }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; padding: 15px; }
+            .menu { margin-top: 15px; }
+            .app-section h1 { font-size: 28px; }
+            .logo-nav { height: 55px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-title">
-            <h1>Política de Privacidad de Latitud Cero</h1>
-            <img src="icono.png" alt="Icono de Latitud Cero" class="app-icon">
+
+    <div class="top-info">
+        🚀 DESCARGA LA APP OFICIAL | LATITUD CERO - ECUADOR
+    </div>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="icon.png" alt="LATITUD CERO Logo" class="logo-nav" onclick="location.href='index.html';">
         </div>
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="https://play.google.com/store/apps/details?id=com.juanfran77githubio1.taxiec" target="_blank">Descargar App</a>
+            <a href="#contacto-form">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="app-section">
+        <h1>App LATITUD CERO para Ecuador</h1>
+        <p>Solicita tu taxi o envía tus pedidos de forma rápida, segura y directa desde tu celular.</p>
         
-        <p><strong>Última actualización:</strong> 25 de noviembre de 2026</p>
+        <a href="https://play.google.com/store/apps/details?id=com.juanfran77githubio1.taxiec" target="_blank" class="playstore-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" width="200" alt="Disponible en Google Play">
+        </a>
 
-        <p>En <strong>Latitud Cero - Taxi Delivery</strong>, la privacidad de nuestros usuarios es una prioridad. Esta política detalla cómo manejamos la información para ofrecer un servicio de transporte en taxi y envíos (delivery) eficiente, directo y seguro en Ecuador.</p>
+        <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://play.google.com/store/apps/details?id=com.juanfran77githubio1.taxiec" 
+                 alt="Código QR Latitud Cero" class="qr-code">
+            <div class="qr-text">ESCÁNEAME PARA DESCARGAR</div>
+        </div>
 
-        <h2>1. Información que recopilamos</h2>
-        <ul>
-            <li><strong>Datos de Perfil:</strong> Nombre, correo electrónico, número de teléfono y foto de perfil obtenidos mediante el inicio de sesión con Facebook, Google o registro manual.</li>
-            <li><strong>Ubicación Precisa (GPS):</strong> Recopilamos coordenadas exactas para conectar al pasajero o remitente con el conductor más cercano y calcular rutas de viaje o entrega.</li>
-        </ul>
-
-        <h2>2. Uso de la Ubicación en Segundo Plano</h2>
-        <p>Para los usuarios registrados como <strong>CONDUCTORES</strong>, Latitud Cero recopila datos de ubicación incluso cuando la aplicación está cerrada o no se está utilizando activamente. Esto permite asignar solicitudes cercanas y que el pasajero o cliente visualice en tiempo real la llegada de su taxi o encomienda.</p>
-
-        <h2>3. Finalidad del tratamiento</h2>
-        <p>Utilizamos su información exclusivamente para:</p>
-        <ul>
-            <li>Gestionar viajes en taxi y entregas de paquetería o delivery.</li>
-            <li>Optimizar rutas y tiempos de llegada mediante Google Maps API.</li>
-            <li>Enviar notificaciones push sobre el estado de su viaje o pedido.</li>
-        </ul>
-
-        <div class="highlight-box">
-            <h2>4. Instrucciones para la Eliminación de Datos (User Data Deletion)</h2>
-            <p>En cumplimiento con las políticas de privacidad de Google Play Store y las condiciones de plataforma de Meta, proporcionamos un mecanismo claro, seguro y accesible para que cualquier usuario revoque sus permisos o solicite la eliminación permanente de su información:</p>
+        <div class="features">
+            <div class="card">
+                <div>
+                    <i class="fa fa-taxi"></i>
+                    <h3>Taxi y Delivery</h3>
+                    <p>Conexión directa para pasajeros, envíos y conductores en una sola aplicación.</p>
+                </div>
+                <img src="img1.png" alt="Taxi y Delivery" class="card-img">
+            </div>
             
-            <p><strong>Pasos para solicitar la eliminación de datos de forma manual:</strong></p>
-            <ol>
-                <li>Envíe una solicitud por correo electrónico a: <strong>aplicacionesjfch@gmail.com</strong></li>
-                <li>Use el asunto obligatorio: <strong>"Eliminación de datos de usuario - Latitud Cero"</strong>.</li>
-                <li>Detalle el nombre completo y el correo electrónico con el que se registró en la app.</li>
-                <li>En un plazo máximo de <strong>48 a 72 horas</strong> hábiles, eliminaremos de forma definitiva de nuestros servidores de Firebase y bases de datos toda su información personal, historial de viajes/envíos y registros de ubicación.</li>
-            </ol>
-            <p><em>Nota adicional: También puede revocar el acceso de la aplicación directamente desde su perfil de Facebook en la sección "Configuración y privacidad" &gt; "Apps y sitios web".</em></p>
-
-            <div class="delete-action-box">
-                <h3>Solicitud Inmediata de Borrado</h3>
-                <p style="font-size: 0.95em; color: #555; margin-bottom: 20px; text-align: left;">
-                    Haga clic en el siguiente botón para abrir de forma directa y segura su aplicación de correo electrónico predeterminada. El mensaje ya se creará configurado con el destinatario y el asunto correctos para tramitar su solicitud.
-                </p>
-                
-                <a href="mailto:aplicacionesjfch@gmail.com?subject=Eliminacion%20de%20datos%20de%20usuario%20-%20Latitud%20Cero&body=Por%20medio%20del%20presente%2C%20solicito%20formalmente%20la%20eliminaci%C3%B3n%20definitiva%20de%20mis%20datos%20e%20historial%20de%20la%20App%20Latitud%20Cero.%0A%0A---%20POR%20FAVOR%20COMPLETE%20ESTOS%20DATOS%20EN%20SU%20CORREO%20---%0ANombre%20Completo%3A%20%0ACorreo%20de%20la%20Cuenta%3A%20%0A" 
-                   class="btn-direct-mail">
-                    SOLICITAR ELIMINACIÓN POR CORREO
-                </a>
+            <div class="card">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <h3>GPS Real</h3>
+                    <p>Ubicación precisa y seguimiento en tiempo real de tu viaje o encomienda.</p>
+                </div>
+                <img src="img2.png" alt="GPS Real" class="card-img">
+            </div>
+            
+            <div class="card">
+                <div>
+                    <i class="fa fa-bell"></i>
+                    <h3>Alertas</h3>
+                    <p>Recibe notificaciones inmediatas cuando tu conductor acepte o llegue al punto.</p>
+                </div>
+                <img src="img3.png" alt="Alertas" class="card-img">
             </div>
         </div>
+    </section>
 
-        <h2>5. Seguridad y Terceros</h2>
-        <p>Sus datos están protegidos mediante el cifrado de Google Firebase. No vendemos ni compartimos su información personal con terceros.</p>
+    <div class="bottom-wrapper">
+        <section class="contact-container" id="contacto-form">
+            <div class="info-box">
+                <h3>Información</h3>
+                <p><i class="fa fa-map-pin" style="color:var(--rojo-latitud)"></i> <b>Ubicación:</b> Ecuador</p>
+                <p><i class="fa fa-envelope" style="color:var(--rojo-latitud)"></i> <b>Soporte:</b> aplicacionesjfch@gmail.com</p>
+                <p><i class="fa fa-file-text" style="color:var(--rojo-latitud)"></i> <a href="https://carreraapk.github.io/latitud-cero/" class="policy-link" target="_blank">Políticas de Privacidad</a></p>
+            </div>
 
-        <div class="footer">
-            <p>&copy; 2026 Latitud Cero - Taxi Delivery. Desarrollado en Ecuador.</p>
-            <p>Contacto de soporte: <strong>aplicacionesjfch@gmail.com</strong></p>
-        </div>
+            <div class="form-box">
+                <h2>Contacto y Comentarios</h2>
+                <p>¿Tienes dudas o sugerencias? Estaremos gustosos de atenderte.</p>
+                
+                <form action="mailto:aplicacionesjfch@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o Comentario</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">ENVIAR MENSAJE</button>
+                </form>
+            </div>
+        </section>
+
+        <footer style="padding: 40px 20px; font-size: 16px; color: #000; font-weight: 900; background: rgba(255,255,255,0.65);">
+            &copy; 2026 LATITUD CERO Ecuador - Todos los derechos reservados.
+        </footer>
     </div>
+
+    <div class="floating">
+        <div class="chat-tag">¡Descarga la App!</div>
+        <a href="https://play.google.com/store/apps/details?id=com.juanfran77githubio1.taxiec" class="play-float-btn" target="_blank">
+            <img src="icon.png" alt="Icono LATITUD CERO">
+        </a>
+    </div>
+
 </body>
 </html>
